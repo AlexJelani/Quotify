@@ -35,6 +35,11 @@
         public function getGenre() {
             return $this->genre;
         }
+
+        public function getNumberOfSong() {
+            $query = mysqli_query($this->con, "SELECT * FROM songs WHERE id='$this->id'");
+            return mysqli_num_rows($query);
+        }
        
     }
 
