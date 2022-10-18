@@ -17,8 +17,9 @@ $artist = $album->getArtist();
         <img src="<?php echo $album->getArtWorkPath();    ?>" alt="">
     </div>
     <div class="rightSection">
-        <h2> <?php echo $album->getTitle() ?>    </h2>
-        <span> By <?php echo $artist->getName() ?></span>
+        <h2> <?php echo $album->getTitle(); ?> </h2>
+        <p> By <?php echo $artist->getName(); ?></p>
+        <p> <?php echo $album->getNumberOfSongs(); ?> song </p>
     </div>
 </div>
 
