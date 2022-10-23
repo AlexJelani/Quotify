@@ -20,11 +20,13 @@ if (isset($_SESSION['userLoggedIn'])) {
 
 <head>
 	<link rel="stylesheet" href="assets/css/style.css">
+	<script src="assets/js/script.js"></script>
 	<title>Welcome to Slotify!</title>
 </head>
 
 <body>
 
+	
 	<div class="mainContainer">
 
 		<div id="topContainer">
