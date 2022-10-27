@@ -25,7 +25,14 @@ $jsonArray = json_encode($resultArray);
             $(".trackName span").text(track.title);
 
             $.post("includes/handlers/ajax/getArtistJson.php", { artistId: track.artist }, function(data) {
+                var artist = JSON.parse(data);
 
+                $(".artistName span").text(artist.name);
+            });
+            $.post("includes/handlers/ajax/getAlbumJson.php", { albumId: track.album}, function(data) {
+                var album = JSON.parse(data);
+
+                $(".albumLink img").attr("src", album.artworkPath);
             });
 
             audioElement.setTrack(track.path);
@@ -56,7 +63,7 @@ $jsonArray = json_encode($resultArray);
         <div id="nowPlayingLeft">
             <div class="content">
                 <span class="albumLink">
-                    <img class="albumArtwork" src="https://1.bp.blogspot.com/-Pge52ULpxns/YQwcqIo6DeI/AAAAAAAELGQ/DmH3PLd9MW0R7kN_6NkSA9brqvriNx9YQCLcBGAsYHQ/s640/ventriloquist-album-cover-1.jpg" alt="">
+                    <img class="albumArtwork" src="" alt="">
                 </span>
                 <div class="trackInfo">
                     <span class="trackName">
