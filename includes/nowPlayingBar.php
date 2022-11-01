@@ -123,7 +123,7 @@ $jsonArray = json_encode($resultArray);
                             <div class="progress"></div>
                         </div>
                     </div>
-                    <span class="progressTime current">0.00</span>
+                    <span class="progressTime remaining">0.00</span>
 
                 </div>
             </div>
