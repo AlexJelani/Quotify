@@ -1,57 +1,62 @@
+
 <?php
-class Song {
+class Album
+{
 
     private $con;
     private $id;
-    private $mysqLiData;
     private $title;
     private $artistId;
-    private $albumId;
     private $genre;
-    private $duration;
-    private $path;
-   
-   
-   
+    private $artworkPath;
 
-    public function __construct($con, $id) {
+    public function __construct($con, $id)
+    {
         $this->con = $con;
         $this->id = $id;
 
-        $query = mysqli_query($this->con, "SELECT * FROM songs WHERE id='$this->id'");
-        $this->mysqLiData = mysqli_fetch_array($query);
-        $this->title = $this->mysqLiData['title'];
-        $this->artistId= $this->mysqLiData['artistId'];
-        $this->albumId = $this->mysqLiData['albumId'];
-        $this->genre = $this->mysqLiData['genre'];
-        $this->duration = $this->mysqLiData['duration'];
-        $this->path = $this->mysqLiData['path'];
+        $query = mysqli_query($this->con, "SELECT * FROM albums WHERE id='$this->id'");
+        $album = mysqli_fetch_array($query);
 
-    
+        $this->title = $album['title'];
+        $this->artistId = $album['artist'];
+        $this->genre = $album['genre'];
+        $this->artworkPath = $album['artworkPath'];
     }
+    public function getTitle()
+    {
 
-    public function getTitle() {
         return $this->title;
     }
-    public function getArtist() {
-        return new Artist($this->con, $this->artistId) ;
+
+    public function getArtWorkPath()
+    {
+        return $this->artworkPath;
     }
-    public function getAlbum() {
-        return new Album($this->con, $this->albumId) ;
+    public function getArtist()
+    {
+        return new Artist($this->con, $this->artistId);
     }
-    public function getPath() {
-        return $this->path;
-    }
-    public function getDuration() {
-        return $this->duration;
-    }
-    public function getGenre() {
+    public function getGenre()
+    {
         return $this->genre;
     }
-    public function getMysqliData() {
-        return $this->mysqLiData;
+
+    public function getNumberOfSongs()
+    {
+        $query = mysqli_query($this->con, "SELECT id FROM songs WHERE album='$this->id'");
+        return mysqli_num_rows($query);
     }
-    
-  }
+
+    public function getSongIds()
+    {
+        $query = mysqli_query($this->con, "SELECT id FROM songs WHERE album='$this->id'ORDER BY albumOrder ASC");
+        $array = array();
+        while ($row = mysqli_fetch_array($query)) {
+            array_push($array, $row['id']);
+        }
+        return $array;
+    }
+}
 
 ?>
