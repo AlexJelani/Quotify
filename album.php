@@ -19,7 +19,7 @@ $artist = $album->getArtist();
     <div class="rightSection">
         <h2> <?php echo $album->getTitle(); ?> </h2>
         <p> By <?php echo $artist->getName(); ?></p>
-        <p> <?php echo $album->getNumberOfSongs(); ?> song </p>
+        <p> <?php echo $album->getNumberOfSongs(); ?> songs </p>
     </div>
 </div>
 
@@ -30,8 +30,7 @@ $artist = $album->getArtist();
     $songIdArray = $album->getSongIds();
 
     $i = 1;
-    foreach($songIdArray as $songId)
-        
+    foreach($songIdArray as $songId){
         $albumSong = new Song($con, $songId);
         $albumArtist =$albumSong->getArtist();
 
@@ -60,6 +59,10 @@ $artist = $album->getArtist();
              </li>";
 
              $i = $i + 1;
+
+    }
+        
+       
     ?>
 
     </ul>
