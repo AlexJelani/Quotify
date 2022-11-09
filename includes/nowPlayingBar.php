@@ -16,6 +16,13 @@ $(document).ready(function() {
 	currentPlaylist = <?php echo $jsonArray; ?>;
 	audioElement = new Audio();
 	setTrack(currentPlaylist[0], currentPlaylist, false);
+	updateVolumeProgressBar(audioElement.audio);
+
+
+	$("#nowPlayingBarContainer").on("mousedown touchstart mousemove touchmove", function (e) {
+		e.preventDefault();
+	})
+
 
 
 	$(".playbackBar .progressBar").mousedown(function() {
@@ -72,10 +79,20 @@ function timeFromOffset(mouse, progressBar) {
 	audioElement.setTime(seconds);
 }
 
-
+function nextSong() {
+	if (currentIndex == currentPlaylist.length - 1) {
+		currentIndex = 0;
+	}else {
+		currentIndex++;
+	}
+	var tracktoPlay = currentPlaylist[currentIndex];
+	setTrack(tracktoPlay, currentPlaylist, true);
+}
 function setTrack(trackId, newPlaylist, play) {
 
 	$.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
+
+		currentIndex = currentPlaylist.indexOf(trackId);
 
 		var track = JSON.parse(data);
 		$(".trackName span").text(track.title);
@@ -169,7 +186,7 @@ function pauseSong() {
 						<img src="assets/images/icons/pause.png" alt="Pause">
 					</button>
 
-					<button class="controlButton next" title="Next button">
+					<button class="controlButton next" title="Next button" onclick="nextSong()">
 						<img src="assets/images/icons/next.png" alt="Next">
 					</button>
 
