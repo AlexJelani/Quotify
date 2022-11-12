@@ -12,9 +12,9 @@ $jsonArray = json_encode($resultArray);
 
 <script>
 	$(document).ready(function() {
-		currentPlaylist = <?php echo $jsonArray; ?>;
+		var newPlaylist = <?php echo $jsonArray; ?>;
 		audioElement = new Audio();
-		setTrack(currentPlaylist[0], currentPlaylist, false);
+		setTrack(newPlaylist[0], newPlaylist, false);
 		updateVolumeProgressBar(audioElement.audio);
 
 
@@ -77,14 +77,16 @@ $jsonArray = json_encode($resultArray);
 		var seconds = audioElement.audio.duration * (percentage / 100);
 		audioElement.setTime(seconds);
 	}
+
 	function prevSong() {
-		if(audioElement.audio.currentTime >= 3 || currentIndex == 0){
+		if (audioElement.audio.currentTime >= 3 || currentIndex == 0) {
 			audioElement.setTime(0);
-		}else {
-			currentIndex = currentIndex -1;
+		} else {
+			currentIndex = currentIndex - 1;
 			setTrack(currentPlaylist[currentIndex], currentPlaylist, true);
 		}
 	}
+
 	function nextSong() {
 		if (repeat == true) {
 			audioElement.setTime(0);
@@ -96,7 +98,7 @@ $jsonArray = json_encode($resultArray);
 		} else {
 			currentIndex++;
 		}
-		var tracktoPlay = currentPlaylist[currentIndex];
+		var tracktoPlay = shuffle ? shufflePlaylist[currentIndex] : currentPlaylist[currentIndex];
 		setTrack(tracktoPlay, currentPlaylist, true);
 	}
 
@@ -106,6 +108,7 @@ $jsonArray = json_encode($resultArray);
 		$(".controlButton.repeat img").attr("src", "assets/images/icons/" + imageName);
 
 	}
+
 	function setMute() {
 		audioElement.audio.muted = !audioElement.audio.muted;
 		var imageName = audioElement.audio.muted ? "volume-mute.png" : "volume.png";
@@ -113,8 +116,43 @@ $jsonArray = json_encode($resultArray);
 
 	}
 
+	function setShuffle() {
+		shuffle = !shuffle;
+		var imageName = shuffle ? "shuffle-active.png" : "shuffle.png";
+		$(".controlButton.shuffle img").attr("src", "assets/images/icons/" + imageName);
+
+		if (shuffle == true) {
+			shuffleArray(shufflePlaylist);
+			currentIndex = shufflePlaylist.indexOf(audioElement.currentlyPlaying.id);
+		} else {
+			currentIndex = currentPlaylist.indexOf(audioElement.currentlyPlaying.id);
+		}
+
+	}
+	/* Randomize array in-place using Durstenfeld shuffle algorithm */
+	function shuffleArray(a) {
+		var j, x, i;
+		for (i = a.length; i; i--) {
+			j = Math.floor(Math.random() * i);
+			x = a[i - 1];
+			a[i - 1] = a[j];
+			a[j] = x;
+		}
+	}
+
+
 	function setTrack(trackId, newPlaylist, play) {
-		currentIndex = currentPlaylist.indexOf(trackId);
+		if (newPlaylist != currentPlaylist) {
+			currentPlaylist = newPlaylist;
+			shufflePlaylist = currentPlaylist.slice();
+			shuffleArray(shufflePlaylist);
+		}
+
+		if (shuffle == true) {
+			currentIndex = shufflePlaylist.indexOf(trackId);
+		} else {
+			currentIndex = currentPlaylist.indexOf(trackId);
+		}
 		pauseSong();
 		$.post("includes/handlers/ajax/getSongJson.php", {
 			songId: trackId
@@ -203,7 +241,7 @@ $jsonArray = json_encode($resultArray);
 
 				<div class="buttons">
 
-					<button class="controlButton shuffle" title="Shuffle button">
+					<button class="controlButton shuffle" title="Shuffle button" onclick="setShuffle()">
 						<img src="assets/images/icons/shuffle.png" alt="Shuffle">
 					</button>
 
