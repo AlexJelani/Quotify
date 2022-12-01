@@ -12,7 +12,7 @@ function openPage(url) {
   if (url.indexOf("?") == -1) {
     url = url + "?";
   }
-  var encodeUrl = encodeURI(url + "&userLoggedIn=" + userLoggedIn);
+  var encodedUrl = encodeURI(url + "&userLoggedIn=" + userLoggedIn);
   $("#mainContent").load(encodedUrl);
 }
 
