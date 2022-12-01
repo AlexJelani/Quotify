@@ -8,7 +8,7 @@ var repeat = false;
 var shuffle = false;
 var userLoggedIn;
 
-function openPage() {
+function openPage(url) {
   if (url.indexOf("?") == -1) {
     url = url + "?";
   }
