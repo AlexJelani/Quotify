@@ -1,5 +1,5 @@
-<?php 
-include("includes/includedFiles.php");     
+<?php
+include("includes/includedFiles.php");
 ?>
 
 <h1 class="pageHeadingBig">You Might Also Like</h1>
@@ -26,4 +26,3 @@ include("includes/includedFiles.php");
 
 	?>
 </div>
-<?php include("includes/footer.php")   ?>
