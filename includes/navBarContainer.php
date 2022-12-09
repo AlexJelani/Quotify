@@ -6,9 +6,9 @@
 
     <div class="group">
       <div class="navItem">
-        <a href="search.php" class="navItemLink">Search
+        <span onclick="openPage('search.php')" role="link" tabindex="0" class="navItemLink">Search
           <img src="assets/images/icons/search.png" class="icon" alt="search" />
-        </a>
+        </span>
       </div>
     </div>
     <div class="group">
