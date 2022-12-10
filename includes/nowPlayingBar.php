@@ -181,11 +181,13 @@ $jsonArray = json_encode($resultArray);
 
 
 			audioElement.setTrack(track);
+
+
+			if (play == true) {
+				playSong();
+			}
 		});
 
-		if (play == true) {
-			audioElement.play();
-		}
 	}
 
 	function playSong() {
