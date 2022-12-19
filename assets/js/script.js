@@ -8,12 +8,14 @@ var repeat = false;
 var shuffle = false;
 var userLoggedIn;
 
-function openPage() {
+function openPage(url) {
   if (url.indexOf("?") == -1) {
     url = url + "?";
   }
-  var encodeUrl = encodeURI(url + "&userLoggedIn=" + userLoggedIn);
+  var encodedUrl = encodeURI(url + "&userLoggedIn=" + userLoggedIn);
   $("#mainContent").load(encodedUrl);
+  $("body").scrollTop(0);
+  history.pushState(null, null, url);
 }
 
 function formatTime(seconds) {
