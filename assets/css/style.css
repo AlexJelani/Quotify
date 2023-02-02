@@ -392,3 +392,7 @@ body {
 [role="link"] {
   cursor: pointer;
 }
+.searchContainer {
+  background-color: #242424;
+  padding: 20px 28px;
+}
