@@ -9,7 +9,7 @@ var shuffle = false;
 var userLoggedIn;
 
 function openPage(url) {
-  if (url.indexOf("?") == -1) {
+  if (url.indexOf("?") === -1) {
     url = url + "?";
   }
   var encodedUrl = encodeURI(url + "&userLoggedIn=" + userLoggedIn);
@@ -17,6 +17,12 @@ function openPage(url) {
   $("body").scrollTop(0);
   history.pushState(null, null, url);
 }
+// Add the 'popstate' event listener to handle back button
+window.addEventListener("popstate", function(event) {
+  var url = location.href;
+  openPage(url);
+});
+
 
 function formatTime(seconds) {
   var time = Math.round(seconds);
