@@ -4,7 +4,7 @@ include("includes/classes/Artist.php");
 include("includes/classes/Album.php");
 include("includes/classes/Song.php");
 
-//session_destroy(); 
+//session_destroy();
 
 if (isset($_SESSION['userLoggedIn'])) {
 	$userLoggedIn = $_SESSION['userLoggedIn'];
@@ -25,12 +25,12 @@ if (isset($_SESSION['userLoggedIn'])) {
 	<link rel="stylesheet" href="assets/css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="assets/js/script.js"></script>
-	<title>Welcome to Slotify!</title>
+	<title>Welcome to Quotify!</title>
 </head>
 
 <body>
 
-	
+
 	<div class="mainContainer">
 
 		<div id="topContainer">

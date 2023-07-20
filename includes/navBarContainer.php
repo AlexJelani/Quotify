@@ -16,12 +16,15 @@
         <span onclick="openPage('browse.php')" role="link" tabindex="0" class="navItemLink">Browse</span>
       </div>
 
-      <div class="navItem">
-        <span onclick="openPage('yourMusic.php')" role="link" tabindex="0" class="navItemLink">Your Music</span>
-      </div>
-      <div class="navItem">
-        <span onclick="openPage('profile.php')" role="link" tabindex="0" class="navItemLink">Jelani Alexander</span>
-      </div>
+<!--      <div class="navItem">-->
+<!--        <span onclick="openPage('yourMusic.php')" role="link" tabindex="0" class="navItemLink">Your Music</span>-->
+<!--      </div>-->
+        <!-- Link to LinkedIn page -->
+        <div class="navItem">
+            <span onclick="openPageInNewTab('https://www.linkedin.com/in/jelani-alexander/')" role="link" tabindex="0" class="navItemLink">Jelani Alexander</span>
+        </div>
+
     </div>
   </div>
 </div>
+

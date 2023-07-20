@@ -26,6 +26,9 @@ window.addEventListener("popstate", function(event) {
   var url = location.href;
   openPage(url);
 });
+function openPageInNewTab(url) {
+  window.open(url, "_blank");
+}
 
 
 function formatTime(seconds) {
