@@ -1,5 +1,4 @@
-html,
-body {
+html, body {
   padding: 0;
   margin: 0;
   height: 100%;
@@ -360,9 +359,11 @@ body {
   color: #fff;
   margin-bottom: 7px;
 }
+
 .artistInfo {
   text-align: center;
 }
+
 .button {
   color: #fff;
   cursor: pointer;
@@ -375,9 +376,10 @@ body {
   padding: 15px;
   min-width: 130px;
 }
+
 .button.green {
-  background-color: #2eb259;
-  border-color: #2eb259;
+  background-color: #2ebd59;
+  border-color: #2ebd59;
 }
 
 .borderBottom {
@@ -385,30 +387,53 @@ body {
   margin-bottom: 20px;
 }
 
-.trackListContainer h2,
-.gridViewContainer h2 {
+.tracklistContainer h2,
+.gridViewContainer h2,
+.artistsContainer h2 {
   text-align: center;
 }
+
 [role="link"] {
   cursor: pointer;
 }
+
 .searchContainer {
   background-color: #242424;
   padding: 20px 28px;
 }
+
 .searchContainer h4 {
   margin: 0;
   font-weight: 300;
 }
+
 .searchContainer .searchInput {
   width: 100%;
   background-color: transparent;
   border: none;
   color: #fff;
   font-weight: 700;
-  font-size: 60px;
+  font-size: 62px;
   letter-spacing: 2px;
 }
+
 input:focus {
   outline: none;
+}
+
+.searchResultRow {
+  padding: 15px 10px;
+}
+
+.searchResultRow:hover {
+  background-color: #282828;
+}
+
+.searchResultRow .artistName span {
+  color: #fff;
+}
+
+.noResults {
+  margin: 15px;
+  display: block;
 }
