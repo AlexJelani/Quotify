@@ -22,7 +22,7 @@ function getInputValue($name)
 	<link rel="stylesheet" type="text/css" href="assets/css/register.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
 	<script src="assets/js/register.js"></script>
-	<title>Welcome to Spotify Clone!</title>
+	<title>Welcome to Quotify!</title>
 </head>
 
 <body>
@@ -128,11 +128,11 @@ function getInputValue($name)
 			</div>
 
 			<div id="loginText">
-				<h1><span>Get great music,</span> right now</h1>
+                <h1>Quotify</h1>
+				<h1><span>Get great quotes,</span> right now</h1>
 				<h2>Listen to loads of songs for free</h2>
 				<ul>
-					<li>Discover music you'll fall in love with</li>
-					<li>Create your own playlists</li>
+					<li>Discover quotes you'll fall in love with</li>
 					<li>Follow artists to keep up to date</li>
 				</ul>
 			</div>
